@@ -1,107 +1,122 @@
-
+/* Mengatur style umum untuk body halaman */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 20px;
-  padding: 0;
+  background-color: #f2f2f2; /* Memberikan warna latar belakang abu-abu terang pada seluruh halaman */
+  font-family: 'Segoe UI', sans-serif; /* Mengatur font yang digunakan menjadi 'Segoe UI', jika tidak tersedia akan menggunakan font sans-serif */
+  color: white; /* Mengatur warna teks menjadi putih */
+  background-image: url('labalaba.png'); /* Menambahkan gambar latar belakang (gambar laba-laba) */
+  background-size: cover; /* Membuat gambar latar belakang mencakup seluruh area layar */
+  background-position: center; /* Menempatkan gambar latar belakang di tengah layar */
+  background-attachment: fixed; /* Menetapkan gambar latar belakang untuk tetap berada di tempat saat menggulir halaman */
 }
 
-h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+/* Mengatur style untuk elemen h1 dan h2 */
+h1, h2 {
+  color: #ff4747; /* Memberikan warna merah cerah pada teks h1 dan h2 */
+  text-shadow: 3px 3px 8px #000; /* Memberikan bayangan pada teks dengan warna hitam untuk efek lebih tegas */
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Mengatur style untuk elemen card */
+.card {
+  border-radius: 20px; /* Memberikan sudut membulat pada border card */
+  background-color: rgba(0, 0, 0, 0.75); /* Memberikan latar belakang hitam transparan pada card */
+  color: white; /* Mengatur warna teks dalam card menjadi putih */
+  border: 2px solid #ff4747; /* Memberikan border merah cerah pada card */
+  box-shadow: 0 0 15px #ff4747; /* Memberikan efek bayangan berwarna merah pada card */
+  transition: transform 0.2s ease; /* Menambahkan efek transisi pada transformasi card agar lebih halus */
 }
 
-th, td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
+/* Efek saat card di-hover (diarahkan mouse ke card) */
+.card:hover {
+  transform: scale(1.05); /* Meningkatkan ukuran card sedikit saat di-hover */
 }
 
-th {
-  background-color: #007bff;
-  color: white;
-  text-transform: uppercase;
-}
-
-tr:hover {
-  background-color: #f1f1f1;
-}
-
-.tombol {
-  display: block;
-  width: 150px;
-  text-align: center;
-  background-color: #28a745;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 20px auto;
-  transition: 0.3s;
-}
-
-.tombol:hover {
-  background-color: #218838;
-}
-
-.btn-warning, .btn-danger {
-  padding: 8px 12px;
-  border-radius: 5px;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.btn-warning {
-  background-color: #ffc107;
-  color: black;
-}
-
-.btn-warning:hover {
-  background-color: #e0a800;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  color: white;
-}
-
-.btn-danger:hover {
-  background-color: #c82333;
-}
-
+/* Mengatur tombol status */
 .btn-status {
-  padding: 8px 12px;
-  border-radius: 5px;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-  text-transform: capitalize;
-  font-weight: bold;
+  border-radius: 10px; /* Memberikan sudut membulat pada tombol status */
 }
 
-.btn-status[data-status="Belum Selesai"] {
-  background-color: #dc3545; /* Merah */
-  color: white;
+/* Mengatur tombol status dengan class .btn-danger (tombol merah) */
+.btn-status.btn-danger {
+  background-color: #dc3545; /* Memberikan warna latar belakang merah pada tombol */
+  border-color: #dc3545; /* Memberikan warna border merah pada tombol */
 }
 
-.btn-status[data-status="Sedang Dikerjakan"] {
-  background-color: #ffc107; /* Kuning */
-  color: black;
+/* Mengatur tombol status dengan class .btn-success (tombol hijau) */
+.btn-status.btn-success {
+  background-color: #198754; /* Memberikan warna latar belakang hijau pada tombol */
+  border-color: #198754; /* Memberikan warna border hijau pada tombol */
 }
 
-.btn-status[data-status="Selesai"] {
-  background-color: #28a745; /* Hijau */
-  color: white;
+/* Mengatur style untuk tombol secara umum */
+.btn {
+  border-radius: 12px; /* Memberikan sudut membulat pada tombol */
+}
+
+/* Mengatur dropdown menu */
+.dropdown-menu {
+  background-color: #212529; /* Memberikan warna latar belakang gelap pada menu dropdown */
+}
+
+/* Mengatur warna teks untuk item dropdown */
+.dropdown-item {
+  color: white; /* Memberikan warna teks putih pada item dropdown */
+}
+
+/* Efek hover pada item dropdown */
+.dropdown-item:hover {
+  background-color: #343a40; /* Memberikan latar belakang gelap pada item dropdown saat di-hover */
+}
+
+/* Mengatur style untuk judul section */
+.section-title {
+  margin-top: 40px; /* Memberikan jarak atas pada judul section */
+  margin-bottom: 20px; /* Memberikan jarak bawah pada judul section */
+  border-bottom: 3px solid #ff4747; /* Memberikan garis bawah berwarna merah cerah pada judul */
+  display: inline-block; /* Menjadikan judul section berada dalam baris yang sama */
+  padding-bottom: 5px; /* Memberikan sedikit jarak bawah pada judul */
+}
+
+/* Mengatur style untuk tombol ubah */
+.ubah {
+  background-color: #0d6efd; /* Memberikan warna latar belakang biru pada tombol ubah */
+  color: white; /* Memberikan warna teks putih pada tombol */
+}
+
+/* Efek hover pada tombol ubah */
+.ubah:hover {
+  background-color: #0b5ed7; /* Memberikan warna biru yang lebih gelap pada tombol saat di-hover */
+}
+
+/* Mengatur logo Spider-Man */
+.spiderman-logo {
+  width: 100px; /* Menetapkan lebar logo */
+  height: 100px; /* Menetapkan tinggi logo */
+  background-color: #ff4747; /* Memberikan warna latar belakang merah cerah pada logo */
+  border-radius: 50%; /* Membuat logo berbentuk lingkaran */
+  margin: 0 auto; /* Menempatkan logo di tengah secara horizontal */
+  position: relative; /* Menetapkan posisi relatif agar elemen pseudo dapat diposisikan dengan benar */
+  top: 20px; /* Memberikan jarak dari atas */
+}
+
+/* Menambahkan garis vertikal di logo Spider-Man */
+.spiderman-logo::before {
+  content: ''; /* Membuat elemen kosong */
+  position: absolute; /* Posisi absolut agar dapat diposisikan di dalam .spiderman-logo */
+  width: 6px; /* Memberikan lebar garis vertikal */
+  background-color: #fff; /* Memberikan warna garis putih */
+  top: 25%; /* Menempatkan garis vertikal di tengah vertikal logo */
+  left: 50%; /* Menempatkan garis vertikal di tengah horizontal logo */
+  transform: translateX(-50%); /* Menyejajarkan garis vertikal dengan sumbu tengah */
+  height: 50%; /* Membuat garis vertikal setengah tinggi logo */
+}
+
+/* Menambahkan garis horizontal di logo Spider-Man */
+.spiderman-logo::after {
+  content: ''; /* Membuat elemen kosong */
+  position: absolute; /* Posisi absolut agar dapat diposisikan di dalam .spiderman-logo */
+  left: 25%; /* Menempatkan garis horizontal di tengah logo secara horizontal */
+  top: 50%; /* Menempatkan garis horizontal di tengah logo secara vertikal */
+  height: 6px; /* Memberikan tinggi garis horizontal */
+  background-color: #fff; /* Memberikan warna garis putih */
+  transform: translateY(-50%) rotate(45deg); /* Memutar garis untuk memberikan efek silang */
 }

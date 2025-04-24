@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>To-Do List Harian</title>
+
+  <!-- Import Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Import Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Import jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Import custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- CSS tambahan -->
   <style>
     body {
       background-color: #f8f9fa;
       font-family: 'Segoe UI', sans-serif;
     }
+
     .card {
       border-radius: 16px;
       transition: all 0.3s ease;
     }
+
     .card:hover {
       transform: scale(1.01);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
+
     .section-title {
       margin-top: 40px;
       margin-bottom: 20px;
@@ -28,6 +43,7 @@
 </head>
 
 <body class="p-4">
+  <!-- Dropdown Menu -->
   <div class="dropdown mb-4">
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Menu</button>
     <ul class="dropdown-menu">
@@ -36,35 +52,43 @@
     </ul>
   </div>
 
+  <!-- Audio latar -->
+  <audio id="bg-audio" loop>
+    <source src="musik.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Main judul -->
   <div class="text-center mb-5">
     <h1>To-Do List Harian</h1>
     <p class="text-muted">Kelola tugasmu dengan mudah dan rapi</p>
   </div>
 
+  <!-- Daftar tugas -->
   <h2 class="section-title">Belum Selesai</h2>
   <div class="row" id="belum-selesai"></div>
 
   <h2 class="section-title">Sudah Selesai</h2>
   <div class="row" id="sudah-selesai"></div>
 
+  <!-- Script utama -->
   <script type="module">
+    // Import fungsi dari main.js
     import { ambildaftartugas, hapustugas, ubahstatus } from './main.js';
 
+    // Main function saat dokumen siap
     $(document).ready(async function () {
       const belumContainer = $("#belum-selesai");
       const sudahContainer = $("#sudah-selesai");
 
       try {
+        // Ambil semua data tugas
         const daftarTugas = await ambildaftartugas();
 
-        if (!daftarTugas || daftarTugas.length === 0) {
-          console.log("Tidak ada tugas.");
-          return;
-        }
-
+        // Tampilkan setiap tugas dalam card
         daftarTugas.forEach((data) => {
           const statusClass = data.status === "Selesai" ? "success" : "danger";
 
+          // Card HTML tugas
           const cardHTML = `
             <div class="col-md-4 mb-4" id="tugas-${data.id}">
               <div class="card shadow-sm h-100">
@@ -84,6 +108,7 @@
               </div>
             </div>`;
 
+          // Masukkan ke container sesuai status
           if (data.status === "Selesai") {
             sudahContainer.append(cardHTML);
           } else {
@@ -94,7 +119,7 @@
         console.error("Gagal mengambil data:", error);
       }
 
-      // Tombol ubah status
+      // Event ubah status
       $(document).on("click", ".btn-status", async function () {
         const tugasId = $(this).attr("data-id");
         const statusSekarang = $(this).attr("data-status");
@@ -108,32 +133,32 @@
 
           const card = $(this).closest('.col-md-4');
           const targetContainer = statusBaru === "Selesai" ? "#sudah-selesai" : "#belum-selesai";
-
           $(card).detach().appendTo($(targetContainer));
         } catch (error) {
           console.error("Gagal mengubah status:", error);
         }
       });
 
-      // Tombol ubah
+      // Event tombol ubah
       $(document).on("click", ".ubah", function () {
         const id = $(this).attr('data');
         window.location.replace('ubahtugas.html?docId=' + id);
       });
 
-      // Tombol hapus
+      // Event tombol hapus
       $(document).on("click", ".tombol-hapus", async function () {
         const id = $(this).attr('data');
         await hapustugas(id);
         location.reload();
       });
 
-      // Set warna tombol status
+      // Set warna tombol status saat awal
       $(".btn-status").each(function () {
         updateWarnaStatus($(this), $(this).attr("data-status"));
       });
     });
 
+    // Fungsi untuk mengganti warna tombol berdasarkan status
     function updateWarnaStatus(button, status) {
       if (status === "Belum Selesai") {
         button.removeClass("btn-success").addClass("btn-danger");
@@ -141,6 +166,12 @@
         button.removeClass("btn-danger").addClass("btn-success");
       }
     }
+
+    // Play musik saat halaman pertama kali diklik
+    window.addEventListener('click', () => {
+      document.getElementById('bg-audio').play();
+    }, { once: true });
   </script>
 </body>
+
 </html>
